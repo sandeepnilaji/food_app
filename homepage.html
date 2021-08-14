@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./food_styles/nav_style.css" />
+  </head>
+  <body></body>
+</html>
+<script type="module">
+  import food_navbar from "./food_components/food_navbar.js";
+  document.body.innerHTML = food_navbar();
+
+  import { search, show_item } from "./s.js";
+  let bt = document.getElementById("btsearch");
+  bt.addEventListener("click", () => {
+    let search_food = document.getElementById("in").value;
+    var show1 = document.getElementById("show");
+    let res1 = search(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${search_food}`
+    ).then((data) => {
+      console.log(data);
+      show_item(data, show1);
+    });
+  });
+  // console.log(res1);
+</script>
+
+<!-- <script src="food_js.js"></script> -->
